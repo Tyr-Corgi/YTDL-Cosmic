@@ -10,7 +10,7 @@ $Shortcut.WorkingDirectory = $PSScriptRoot
 $Shortcut.Description = "YouTube Audio Downloader - Cosmic Edition"
 
 # Set custom icon if it exists
-$IconPath = Join-Path $PSScriptRoot "..\nebula-icon.ico"
+$IconPath = Join-Path $PSScriptRoot "nebula-icon.ico"
 if (Test-Path $IconPath) {
     $Shortcut.IconLocation = $IconPath
     Write-Host "Custom nebula icon applied!" -ForegroundColor Magenta

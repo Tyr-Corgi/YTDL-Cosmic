@@ -13,13 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\AudioDownloader.cs" Link="Core\AudioDownloader.cs" />
-    <Compile Include="..\Config.cs" Link="Core\Config.cs" />
+    <Compile Include="..\Core\AudioDownloader.cs" Link="Core\AudioDownloader.cs" />
+    <Compile Include="..\Core\Config.cs" Link="Core\Config.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\Tools\yt-dlp.exe" CopyToOutputDirectory="PreserveNewest" Link="Tools\yt-dlp.exe" />
-    <None Include="..\Tools\ffmpeg.exe" CopyToOutputDirectory="PreserveNewest" Link="Tools\ffmpeg.exe" />
+    <None Include="..\..\Tools\yt-dlp.exe" CopyToOutputDirectory="PreserveNewest" Link="Tools\yt-dlp.exe" />
+    <None Include="..\..\Tools\ffmpeg.exe" CopyToOutputDirectory="PreserveNewest" Link="Tools\ffmpeg.exe" />
   </ItemGroup>
 
   <ItemGroup>

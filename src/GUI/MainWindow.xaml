@@ -9,7 +9,8 @@
         Height="700" Width="900"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
-        Background="#0a0e27">
+        Background="#0a0e27"
+        Icon="Assets/nebula-icon.ico">
     
     <Window.Resources>
         <!-- Cosmic Glow Effect -->
