@@ -4,6 +4,9 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using WpfPoint = System.Windows.Point;
+using WpfBrush = System.Windows.Media.Brush;
+using WpfColor = System.Windows.Media.Color;
 
 namespace YouTubeAudioDownloader.GUI
 {
@@ -23,7 +26,7 @@ namespace YouTubeAudioDownloader.GUI
         /// <summary>
         /// Creates a burst of star particles
         /// </summary>
-        public void CreateStarBurst(Point origin, int particleCount = 20)
+        public void CreateStarBurst(WpfPoint origin, int particleCount = 20)
         {
             for (int i = 0; i < particleCount; i++)
             {
@@ -31,7 +34,7 @@ namespace YouTubeAudioDownloader.GUI
             }
         }
 
-        private void CreateStar(Point origin)
+        private void CreateStar(WpfPoint origin)
         {
             // Create star ellipse
             var star = new Ellipse
@@ -112,7 +115,7 @@ namespace YouTubeAudioDownloader.GUI
             {
                 Width = _random.Next(1, 3),
                 Height = _random.Next(1, 3),
-                Fill = new SolidColorBrush(Color.FromArgb(150, 255, 255, 255)),
+                Fill = new SolidColorBrush(WpfColor.FromArgb(150, 255, 255, 255)),
                 Opacity = 0
             };
 
@@ -145,15 +148,15 @@ namespace YouTubeAudioDownloader.GUI
             dust.BeginAnimation(UIElement.OpacityProperty, fade);
         }
 
-        private Brush GetRandomCosmicColor()
+        private WpfBrush GetRandomCosmicColor()
         {
             var colors = new[]
             {
-                Color.FromRgb(0, 212, 255),    // Cyan
-                Color.FromRgb(255, 107, 53),   // Orange
-                Color.FromRgb(139, 90, 139),   // Purple
-                Color.FromRgb(247, 183, 49),   // Gold
-                Color.FromRgb(255, 255, 255)   // White
+                WpfColor.FromRgb(0, 212, 255),    // Cyan
+                WpfColor.FromRgb(255, 107, 53),   // Orange
+                WpfColor.FromRgb(139, 90, 139),   // Purple
+                WpfColor.FromRgb(247, 183, 49),   // Gold
+                WpfColor.FromRgb(255, 255, 255)   // White
             };
 
             return new SolidColorBrush(colors[_random.Next(colors.Length)]);

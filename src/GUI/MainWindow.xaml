@@ -160,6 +160,10 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="20"/>
                     <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
@@ -199,8 +203,43 @@
                             TextChanged="UrlTextBox_TextChanged"/>
                 </StackPanel>
 
-                <!-- Format Selection -->
+                <!-- Download Folder Selection -->
                 <StackPanel Grid.Row="6">
+                    <TextBlock Text="Download Folder" 
+                              Foreground="#f7b731" 
+                              FontSize="14" 
+                              FontWeight="SemiBold"
+                              Margin="0,0,0,8">
+                        <TextBlock.Effect>
+                            <DropShadowEffect Color="#f7b731" BlurRadius="10" ShadowDepth="0" Opacity="0.5"/>
+                        </TextBlock.Effect>
+                    </TextBlock>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <TextBox x:Name="FolderPathTextBox"
+                                Grid.Column="0"
+                                Style="{StaticResource CosmicTextBoxStyle}"
+                                IsReadOnly="True"
+                                Background="#0f1419"
+                                Text="{Binding DownloadFolder, Mode=OneWay}"/>
+                        
+                        <Button x:Name="BrowseFolderButton"
+                               Grid.Column="2"
+                               Content="Browse..."
+                               Style="{StaticResource CosmicButtonStyle}"
+                               Padding="20,12"
+                               FontSize="14"
+                               Click="BrowseFolderButton_Click"/>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Format Selection -->
+                <StackPanel Grid.Row="8">
                     <TextBlock Text="Audio Format" 
                               Foreground="#00d4ff" 
                               FontSize="14" 
@@ -218,15 +257,34 @@
                 </StackPanel>
 
                 <!-- Download Button -->
-                <Button Grid.Row="8"
+                <Button Grid.Row="10"
                        x:Name="DownloadButton"
                        Content="✨ Download Audio ✨"
                        Style="{StaticResource CosmicButtonStyle}"
                        Click="DownloadButton_Click"
                        HorizontalAlignment="Center"/>
 
+                <!-- Playlist Progress (initially hidden) -->
+                <TextBlock Grid.Row="12"
+                          x:Name="PlaylistProgressText"
+                          Visibility="Collapsed"
+                          FontSize="14"
+                          FontWeight="SemiBold"
+                          HorizontalAlignment="Center"
+                          Margin="0,0,0,0">
+                    <TextBlock.Foreground>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                            <GradientStop Color="#00d4ff" Offset="0"/>
+                            <GradientStop Color="#ff6b35" Offset="1"/>
+                        </LinearGradientBrush>
+                    </TextBlock.Foreground>
+                    <TextBlock.Effect>
+                        <DropShadowEffect Color="#00d4ff" BlurRadius="12" ShadowDepth="0" Opacity="0.6"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+
                 <!-- Progress Bar -->
-                <StackPanel Grid.Row="10" Visibility="Collapsed" x:Name="ProgressPanel">
+                <StackPanel Grid.Row="14" Visibility="Collapsed" x:Name="ProgressPanel">
                     <ProgressBar x:Name="DownloadProgressBar"
                                 Height="20"
                                 Minimum="0"
@@ -245,7 +303,7 @@
                 </StackPanel>
 
                 <!-- Bottom Actions -->
-                <StackPanel Grid.Row="11" 
+                <StackPanel Grid.Row="15" 
                            Orientation="Horizontal" 
                            HorizontalAlignment="Center"
                            VerticalAlignment="Bottom">

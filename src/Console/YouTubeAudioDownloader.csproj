@@ -12,7 +12,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Tools\**\*" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Include="..\Core\AudioDownloader.cs" Link="Core\AudioDownloader.cs" />
+    <Compile Include="..\Core\Config.cs" Link="Core\Config.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Tools\**\*" CopyToOutputDirectory="PreserveNewest" Link="Tools\%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
 
 </Project>

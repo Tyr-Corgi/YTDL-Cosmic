@@ -14,12 +14,15 @@ namespace YouTubeAudioDownloader
         // Get the project root directory (where the .csproj file is)
         private static readonly string ProjectRoot = Path.GetFullPath(Path.Combine(BaseDirectory, "..", "..", ".."));
 
+        // Custom download path set by user (null = use default)
+        private static string? _customDownloadPath = null;
+
         // Paths to external tools - try local first (for GUI), then project root (for console)
         public static string YtDlpPath => GetToolPath("yt-dlp.exe");
         public static string FFmpegPath => GetToolPath("ffmpeg.exe");
 
-        // Output directory for downloaded files (in project root)
-        public static string DownloadsPath => Path.Combine(ProjectRoot, "Downloads");
+        // Output directory for downloaded files (custom or default in project root)
+        public static string DownloadsPath => _customDownloadPath ?? Path.Combine(ProjectRoot, "Downloads");
 
         private static string GetToolPath(string toolName)
         {
@@ -67,6 +70,43 @@ namespace YouTubeAudioDownloader
             {
                 Directory.CreateDirectory(DownloadsPath);
             }
+        }
+
+        /// <summary>
+        /// Sets a custom download path chosen by the user
+        /// </summary>
+        /// <param name="path">Full path to the custom download folder</param>
+        public static void SetCustomDownloadPath(string? path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                _customDownloadPath = null;
+                return;
+            }
+
+            // Validate the path exists
+            if (!Directory.Exists(path))
+            {
+                throw new DirectoryNotFoundException($"The specified path does not exist: {path}");
+            }
+
+            _customDownloadPath = path;
+        }
+
+        /// <summary>
+        /// Gets the default download path (project root Downloads folder)
+        /// </summary>
+        public static string GetDefaultDownloadPath()
+        {
+            return Path.Combine(ProjectRoot, "Downloads");
+        }
+
+        /// <summary>
+        /// Checks if a custom download path is currently set
+        /// </summary>
+        public static bool HasCustomDownloadPath()
+        {
+            return _customDownloadPath != null;
         }
 
         /// <summary>
