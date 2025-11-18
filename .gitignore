@@ -1,0 +1,61 @@
+# .NET Build outputs
+bin/
+obj/
+*.user
+*.suo
+*.cache
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa]rm/
+[Aa]rm64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Downloaded audio files
+Downloads/
+*.mp3
+*.flac
+*.m4a
+*.wav
+*.ogg
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+
+# Visual Studio / Rider
+.vs/
+.vscode/
+.idea/
+*.rsuser
+*.sln.iml
+*.userosscache
+*.sln.docstates
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Tools (large binaries - not committing)
+Tools/ffmpeg.exe
+Tools/yt-dlp.exe
+
+# Generated icon
+nebula-icon.ico
+nebula-icon-temp.png
